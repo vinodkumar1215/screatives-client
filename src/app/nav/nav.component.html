@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#" style="font-weight:bold; font-size:25px;">Screatives</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+        <ul class="navbar-nav me-auto mb-2 mb-md-0" *ngIf="accountService.currentUser$ |async">
+          <li class="nav-item">
+            <a class="nav-link active" style="cursor: pointer;">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" style="cursor: pointer;">Contact us</a>
+          </li>
+        </ul>
+
+        <div class="dropdown ml-3 mr-5" *ngIf="accountService.currentUser$ | async" dropdown>
+          <a class="dropdown-toggle text-light" style="cursor: pointer; text-decoration: none;" dropdownToggle>
+            <strong>Welcome user</strong>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" style="cursor:pointer" *dropdownMenu>
+            <a  class="dropdown-item d-flex align-items-center py-2">
+              <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit file
+            </a>
+            <div class="dropdown-divider"></div>
+            <a (click)="logout()" class="dropdown-item d-flex align-items-center py-2">
+              <i class="fa fa-sign-out mr-3"></i> Logout
+            </a>
+          </div>
+        </div>
+
+        <form *ngIf="!(accountService.currentUser$ | async)" #loginForm = "ngForm" class="d-flex" (ngSubmit)="login()" autocomplete="off">
+          <input name ="email" [(ngModel)] ="model.email"  class="form-control me-2" type="text" placeholder="Email">
+          <input name = "password" [(ngModel)]="model.password" class="form-control me-2" type="password" placeholder="Password">
+          <button class="btn btn-outline-light" type="submit">Login</button>
+        </form>
+    </div>
+  </nav>
