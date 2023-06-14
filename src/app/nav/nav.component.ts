@@ -21,7 +21,6 @@ model: any ={};
 
   spin() {
     this.spinner.show();
-
     setTimeout(() => {
       this.spinner.hide();
     }, 1000);

@@ -19,7 +19,7 @@
           </a>
           <div class="dropdown-menu dropdown-menu-right" style="cursor:pointer" *dropdownMenu>
             <a  class="dropdown-item d-flex align-items-center py-2">
-              <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit file
+              <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit profile
             </a>
             <div class="dropdown-divider"></div>
             <a (click)="logout()" class="dropdown-item d-flex align-items-center py-2">
@@ -29,8 +29,8 @@
         </div>
 
         <form *ngIf="!(accountService.currentUser$ | async)" #loginForm = "ngForm" class="d-flex" (ngSubmit)="login()" autocomplete="off">
-          <input name ="email" [(ngModel)] ="model.email"  class="form-control me-2" type="text" placeholder="Email">
-          <input name = "password" [(ngModel)]="model.password" class="form-control me-2" type="password" placeholder="Password">
+          <input name ="email" [(ngModel)] ="model.email"  class="form-control me-2" type="text" placeholder="Email" required>
+          <input name = "password" [(ngModel)]="model.password" class="form-control me-2" type="password" placeholder="Password" required>
           <button class="btn btn-outline-light" type="submit">Login</button>
         </form>
     </div>
